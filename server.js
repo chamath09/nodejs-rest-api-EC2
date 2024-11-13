@@ -31,7 +31,7 @@ const Item = mongoose.model('Item', itemSchema);
 // CRUD Operations Routes
 
 // CREATE: Add a new item
-app.post('/items', async (req, res) => {
+app.post('/api/items', async (req, res) => {
   const { name, description } = req.body;
 
   try {
@@ -44,7 +44,7 @@ app.post('/items', async (req, res) => {
 });
 
 // READ: Get all items
-app.get('/items', async (req, res) => {
+app.get('/api/items', async (req, res) => {
   try {
     const items = await Item.find();
     res.status(200).json(items);
@@ -54,7 +54,7 @@ app.get('/items', async (req, res) => {
 });
 
 // READ: Get an item by ID
-app.get('/items/:id', async (req, res) => {
+app.get('/api/items/:id', async (req, res) => {
   const { id } = req.params;
 
   try {
@@ -69,7 +69,7 @@ app.get('/items/:id', async (req, res) => {
 });
 
 // UPDATE: Update an item by ID
-app.put('/items/:id', async (req, res) => {
+app.put('/api/items/:id', async (req, res) => {
   const { id } = req.params;
   const { name, description } = req.body;
 
@@ -85,7 +85,7 @@ app.put('/items/:id', async (req, res) => {
 });
 
 // DELETE: Delete an item by ID
-app.delete('/items/:id', async (req, res) => {
+app.delete('/api/items/:id', async (req, res) => {
   const { id } = req.params;
 
   try {
@@ -100,7 +100,7 @@ app.delete('/items/:id', async (req, res) => {
 });
 
 // Example route to test
-app.get('/', (req, res) => {
+app.get('/api/', (req, res) => {
   res.send('Hello, World!');
 });
 
